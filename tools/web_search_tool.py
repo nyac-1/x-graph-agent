@@ -4,6 +4,7 @@ from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_core.tools import BaseTool
 from typing import Type
 from pydantic import BaseModel, Field
+import datetime
 
 
 class WebSearchInput(BaseModel):
@@ -18,7 +19,8 @@ class WebSearchTool(BaseTool):
     description: str = (
         "Search the web for current information, news, and general knowledge. "
         "Use this when you need up-to-date information or facts about current events, "
-        "companies, people, or any topic that might have recent developments."
+        "companies, people, or any topic that might have recent developments. "
+        "This tool provides REAL-TIME information from the internet."
     )
     args_schema: Type[BaseModel] = WebSearchInput
     
@@ -32,7 +34,16 @@ class WebSearchTool(BaseTool):
             results = self._search.run(query)
             if not results:
                 return "No search results found."
-            return f"Web search results for '{query}':\n\n{results}"
+            
+            # Add timestamp and emphasis that these are current results
+            current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+            return (
+                f"REAL-TIME WEB SEARCH RESULTS (as of {current_time}):\n"
+                f"Query: '{query}'\n"
+                f"Results:\n{results}\n\n"
+                f"NOTE: These are current, real-time search results from the internet. "
+                f"Use this information to answer the user's question."
+            )
         except Exception as e:
             return f"Error performing web search: {type(e).__name__}: {str(e)}"
     
