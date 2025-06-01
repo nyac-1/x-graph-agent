@@ -8,13 +8,16 @@ A sophisticated multi-agent system using LangGraph that intelligently routes que
 - **[LangGraph Implementation Details](docs/LANGGRAPH_DETAILS.md)** - Deep dive into LangGraph internals and state management
 - **[Conversation History Feature](docs/CONVERSATION_HISTORY.md)** - How the system maintains context across interactions
 - **[Architecture Overview](docs/ARCHITECTURE.md)** - High-level system design
+- **[Explicit React Agent Implementation](docs/EXPLICIT_REACT_AGENT.md)** - Detailed breakdown of the Think-Act-Observe cycle implementation
+- **[Debug System Guide](docs/DEBUG_SYSTEM.md)** - Comprehensive debugging and performance analysis tools
 
 ## Features
 
 - **Intelligent Query Routing**: Supervisor agent analyzes queries and routes them to the most appropriate specialized agent
 - **Multiple Specialized Agents**:
-  - **General Q&A Agent**: Handles simple queries, calculations, and web searches
+  - **General Q&A Agent**: Handles simple queries, calculations, and web searches with explicit Think-Act-Observe cycle
   - **Research Agent**: Conducts multi-step research using academic sources, web search, and data analysis
+- **Explicit React Implementation**: Transparent implementation showing the core Think-Act-Observe reasoning pattern
 - **Tool Integration**: Python REPL, Web Search, Wikipedia, ArXiv paper search
 - **Beautiful CLI**: Rich terminal interface with formatted outputs and tables
 - **Conversation History**: In-memory session history that tracks all interactions
